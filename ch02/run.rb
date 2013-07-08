@@ -81,31 +81,26 @@ e5 = { x: Number.new(2), y: Number.new(5) }
 
 
 p0 = Number.new(5).to_ruby
-puts eval(p0).call({})
+# puts eval(p0).call({})
 
 p1 = Boolean.new(false).to_ruby
-puts eval(p1).call({})
+# puts eval(p1).call({})
 
 p2 = Variable.new(:x).to_ruby
-puts eval(p2).call({ x: 7 })
+# puts eval(p2).call({ x: 7 })
 
 p3 = Add.new(Variable.new(:x), Number.new(1)).to_ruby
-puts p3
+# puts eval(p3).call({ :x => 3 })
 
+p4 = LessThan.new(Add.new(Variable.new(:x), Number.new(1)),
+                  Number.new(3)).to_ruby
+# puts eval(p4).call({ :x => 3 })
 
-# 음.. lisp로 짜면 더 재미있을것 같다. ㅇㅇ.
-# class : Number, Add, Multiply
-# def: to_s, inspect
-# def: reducible?
-# def: reduce
-# class: Machine - step, run
-# class: Boolean, LessThan
-# class: Variable
-# environment 도입하면서, reduce 수정
-# class: DoNothing - ==
-# class: Assign
-# class: If
-# class: Sequence
-# class: While
-# def: evaluate
-# def: to_ruby
+p5 = Assign.new(:y, Add.new(Variable.new(:x), Number.new(1))).to_ruby
+# puts eval(p5).call({ x: 3} )
+
+p6 = While.new(
+               LessThan.new(Variable.new(:x), Number.new(5)),
+               Assign.new(:x, Multiply.new(Variable.new(:x), Number.new(3)))).to_ruby
+
+puts eval(p6).call({ x: 1})

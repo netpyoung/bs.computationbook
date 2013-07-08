@@ -1,0 +1,10 @@
+# my_grammar.treetop
+grammar MyGrammar
+  rule hello
+    'hello ' linquist
+  end
+
+  rule linquist
+    'chomsky' / 'world'
+  end
+end
