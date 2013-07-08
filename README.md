@@ -6,6 +6,16 @@ Understanding Computation
 
 --------------------------------------------------------------------------------
 
+# 설정
+* treetop : http://treetop.rubyforge.org
+ - 간단한 DSL 구문 분석기.
+ - gem install treetop
+* execjs : https://github.com/sstephenson/execjs
+ - Ruby에서 JavaScript가 돌아가도록 해줌.
+ - gem install execjs
+
+--------------------------------------------------------------------------------
+
 # Preface
 * Who Should Read This Book?
  - 이 책은 프로그래밍 언어와 계산이론에 관심이 많은 이들을 위한, 특히, 수학이나 컴퓨터 공학에 대한 배경이 없는 분들을 위한 책이다.
