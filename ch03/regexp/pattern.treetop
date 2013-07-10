@@ -46,7 +46,7 @@ grammar Pattern
   rule literal
     [a-z] {
       def to_ast
-        Liternal.new(text_value)
+        Literal.new(text_value)
       end
     }
   end
