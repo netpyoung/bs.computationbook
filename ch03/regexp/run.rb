@@ -7,6 +7,11 @@ require_relative 'empty'
 require_relative '../fa/fa_rule'
 require_relative '../fa/nfa_rulebook'
 require_relative '../fa/nfa_simulation'
+require_relative '../fa/dfa'
+require_relative '../fa/dfa_design'
+require_relative '../fa/dfa_rulebook'
+
+
 
 
 p0 = Repeat.new(
@@ -103,12 +108,25 @@ nd0 = NFADesign.new(1, [3], rule0)
 
 nfa0 = nd0.to_nfa(Set[2, 3])
 nfa0.read_character('b')
-puts nfa0.current_states
+# puts nfa0.current_states
 
 
 sim0 = NFASimulation.new(nd0)
-puts sim0.next_state(Set[1, 2], 'a')
-puts sim0.next_state(Set[1, 2], 'b')
-puts sim0.next_state(Set[3, 2], 'b')
-puts sim0.next_state(Set[1, 3, 2], 'b')
-puts sim0.next_state(Set[1, 3, 2], 'a')
+# puts sim0.next_state(Set[1, 2], 'a')
+# puts sim0.next_state(Set[1, 2], 'b')
+# puts sim0.next_state(Set[3, 2], 'b')
+# puts sim0.next_state(Set[1, 3, 2], 'b')
+# puts sim0.next_state(Set[1, 3, 2], 'a')
+
+# puts rule0.alphabet
+# puts sim0.rules_for(Set[1, 2])
+# puts sim0.rules_for(Set[3, 2])
+
+# start_state = nd0.to_nfa.current_states
+# puts sim0.discover_states_and_rules(Set[start_state])
+
+
+dd0 = sim0.to_dfa_design
+puts dd0.accepts?('aaa')
+puts dd0.accepts?('aab')
+puts dd0.accepts?('bbbabb')

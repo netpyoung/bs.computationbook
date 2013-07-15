@@ -32,4 +32,8 @@ class NFARulebook < Struct.new(:rules)
             follow_free_moves(states + more_states)
         end
     end
+
+    def alphabet
+        rules.map(&:character).compact.uniq
+    end
 end
